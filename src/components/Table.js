@@ -21,7 +21,8 @@ function Table() {
       <tbody>
         {
           // Ref.: https://stackoverflow.com/questions/50142525/how-to-render-the-elements-before-to-filter-elements-with-reactjs
-          originalData.filter((data) => data.name.includes(planets))
+          originalData.filter((data) => data.name.toLowerCase()
+            .includes(planets.toLowerCase()))
             .map((info) => (
               <tr key={ info.name }>
                 <td>{ info.name }</td>

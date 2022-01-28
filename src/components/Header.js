@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 import Input from './Input';
+import SelectOption from './SelectOption';
 
 function Header() {
   const { handleOnChange } = useContext(StarWarsContext);
@@ -12,6 +13,22 @@ function Header() {
         onChange={ handleOnChange }
         dataTestid="name-filter"
       />
+      <SelectOption
+        dataTestid="column-filter"
+      />
+      <SelectOption
+        dataTestid="comparison-filter"
+      />
+      <Input
+        type="number"
+        dataTestid="value-filter"
+      />
+      <button
+        type="button"
+        data-testid="button-filter"
+      >
+        Filtrar
+      </button>
     </header>
   );
 }

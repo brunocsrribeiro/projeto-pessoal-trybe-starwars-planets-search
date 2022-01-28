@@ -13,8 +13,14 @@ function Input({ type, value, onChange, dataTestid }) {
 }
 
 Input.propTypes = {
-  type: PropTypes.string,
-  value: PropTypes.string,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   onChange: PropTypes.func,
   dataTestid: PropTypes.string,
 }.isRequired;
