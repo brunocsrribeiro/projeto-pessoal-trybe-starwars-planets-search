@@ -4,18 +4,32 @@ import StarWarsContext from './StarWarsContext';
 import bobaFetch from '../services/servicesAPI';
 
 function StarWarsProvider({ children }) {
-  const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
+  const [planets, setPlanets] = useState('');
+
+  function handleOnChange({ target }) {
+    const { value } = target;
+    setPlanets(value);
+  }
+
+  const contextValues = {
+    originalData,
+    setOriginalData,
+    planets,
+    setPlanets,
+    handleOnChange,
+  };
 
   useEffect(() => {
     const bobaFunction = async () => {
       const response = await bobaFetch();
-      setData(response);
+      setOriginalData(response);
     };
     bobaFunction();
   }, []);
 
   return (
-    <StarWarsContext.Provider value={ { data, setData } }>
+    <StarWarsContext.Provider value={ contextValues }>
       { children }
     </StarWarsContext.Provider>
   );
