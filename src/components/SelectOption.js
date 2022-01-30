@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import StarWarsContext from '../context/StarWarsContext';
 
-function SelectOption({ name, value, onChange, dataTestid }) {
-  const options = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ];
+function SelectOption({ id, name, value, onChange, dataTestid }) {
+  const { options } = useContext(StarWarsContext);
 
   const valueBelt = [
     'maior que',
@@ -16,8 +11,15 @@ function SelectOption({ name, value, onChange, dataTestid }) {
     'igual a',
   ];
 
+  // filtered.forEach((item) => {
+  //   const { column } = item;
+  //   const removed = options.filter((option) => option !== column);
+  //   console.log(removed);
+  // });
+
   return (
     <select
+      id={ id }
       name={ name }
       value={ value }
       onChange={ onChange }
@@ -48,6 +50,7 @@ function SelectOption({ name, value, onChange, dataTestid }) {
 }
 
 SelectOption.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
